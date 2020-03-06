@@ -54,6 +54,12 @@ int os_start_service()
         CloseServiceHandle(schSCManager);
     }
 
+    /*
+    * Sleep for a short time to avoid possible race-conditions with
+    * previously stopped instances of ossec-agent.
+    */
+    Sleep(300); //miliseconds
+
     return (rc);
 }
 
